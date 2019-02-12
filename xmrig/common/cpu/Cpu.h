@@ -5,7 +5,6 @@
  * Copyright 2014-2016 Wolf9466    <https://github.com/OhGodAPet>
  * Copyright 2016      Jay D Dee   <jayddee246@gmail.com>
  * Copyright 2017-2018 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
- * Copyright 2018      Lee Clagett <https://github.com/vtnerd>
  * Copyright 2016-2018 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
@@ -22,31 +21,26 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_CRYPTONIGHT_H
-#define XMRIG_CRYPTONIGHT_H
+#ifndef XMRIG_CPU_H
+#define XMRIG_CPU_H
 
 
-#include <stddef.h>
-#include <stdint.h>
+#include "common/interfaces/ICpuInfo.h"
 
-#if defined _MSC_VER || defined XMRIG_ARM
-#define ABI_ATTRIBUTE
-#else
-#define ABI_ATTRIBUTE __attribute__((ms_abi))
-#endif
 
-struct cryptonight_ctx;
-typedef void(*cn_mainloop_fun_ms_abi)(cryptonight_ctx*) ABI_ATTRIBUTE;
-typedef void(*cn_mainloop_double_fun_ms_abi)(cryptonight_ctx*, cryptonight_ctx*) ABI_ATTRIBUTE;
+namespace xmrig {
 
-struct cryptonight_ctx {
-    alignas(16) uint8_t state[224];
-    alignas(16) uint8_t *memory;
-    cn_mainloop_fun_ms_abi generated_code;
-    cn_mainloop_double_fun_ms_abi generated_code_double;
-    uint64_t generated_code_height;
-    uint64_t generated_code_double_height;
+
+class Cpu
+{
+public:
+    static ICpuInfo *info();
+    static void init();
+    static void release();
 };
 
 
-#endif /* XMRIG_CRYPTONIGHT_H */
+} /* namespace xmrig */
+
+
+#endif /* XMRIG_CPU_H */
