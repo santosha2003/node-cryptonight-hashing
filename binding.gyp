@@ -36,11 +36,10 @@
                 ]
             },
             "cflags_c": [
-                "-std=gnu11 -fPIC -DNDEBUG -Ofast -funroll-loops -fvariable-expansion-in-unroller -fmerge-all-constants"
+                "-DCPU_INTEL -std=gnu11 -fPIC -DNDEBUG -Ofast -funroll-loops -fvariable-expansion-in-unroller -fmerge-all-constants"
             ],
             "cflags_cc": [
-                "-std=gnu++11 -fPIC -DNDEBUG -Ofast -s -funroll-loops -fvariable-expansion-in-unroller -fmerge-all-constants"
-                "-std=gnu11 -fPIC -DNDEBUG -Ofast -funroll-loops -fvariable-expansion-in-unroller -fmerge-all-constants"
+                "-DCPU_INTEL -std=gnu++11 -fPIC -DNDEBUG -Ofast -s -funroll-loops -fvariable-expansion-in-unroller -fmerge-all-constants"
             ],
         }
     ]
